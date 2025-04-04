@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTech - Pesquisar Manutenção</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pesquisar-manutencao.css') }}">
+    <script src="{{ url_for('static', filename='pesquisar-manutencao.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='Imagens/logo-infotech.jpg') }}" alt="logo-infotech">
+        </a>
+        <h1>InfoTech - Manutenções</h1>
+    </header>
+    <main>
+        <section class="menu">
+             <ul>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Cliente</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a></li>
+                        <li><a href="{{ url_for('pesquisar_cliente_page') }}">Pesquisar Cliente</a></li>
+                        <li><a href="{{ url_for('atualizar_cadastro') }}">Atualizar Cadastro</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Manutenção</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_manutencao') }}">Cadastrar Manutenção</a></li>
+                        <li><a href="{{ url_for('pesquisar_manutencao') }}">Pesquisar Manutenção</a></li>
+                        <li><a href="{{ url_for('atualizar_status') }}">Atualizar Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Contato</a>
+                    <ul>
+                        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="conteudo">
+            <div class="plano-de-fundo">
+                <img src="{{ url_for('static', filename='Imagens/principal.jpg') }}" alt="Imagem Principal">
+            </div>
+
+            <div class="pesquisar-manutencao-container">
+                <h1>Pesquisar Manutenção</h1>
+
+                {# === Bloco Flash - VERIFIQUE SE ESTÁ AQUI === #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    <div class="flash-messages-container">
+                      {% for category, message in messages %}
+                        <span class="flash flash-{{ category }}">{{ message }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endwith %}
+                {# === Fim Bloco Flash === #}
+
+                <form id="form-pesquisa-manutencao" method="POST" action="{{ url_for('pesquisar_manutencao') }}">
+                    <div class="form-row">
+                        <label for="tipo_pesquisa">Pesquisar por:</label>
+                        <div class="custom-select" id="tipoPesquisaContainer">
+                            <div class="selected" data-placeholder="{{ not search_criteria or not search_criteria.tipo_pesquisa }}">
+                                {% if search_criteria and search_criteria.tipo_pesquisa %}
+                                    {% if search_criteria.tipo_pesquisa == 'codigo_manutencao' %}ID Manutenção
+                                    {% elif search_criteria.tipo_pesquisa == 'codigo_cliente' %}ID Cliente
+                                    {% elif search_criteria.tipo_pesquisa == 'orcamento' %}Status: Orçamento
+                                    {% elif search_criteria.tipo_pesquisa == 'emManutencao' %}Status: Em Manutenção
+                                    {% elif search_criteria.tipo_pesquisa == 'aguardandoPeca' %}Status: Aguardando Peça
+                                    {% elif search_criteria.tipo_pesquisa == 'pronto' %}Status: Pronto
+                                    {% elif search_criteria.tipo_pesquisa == 'naoAprovado' %}Status: Não Aprovado
+                                    {% elif search_criteria.tipo_pesquisa == 'entregue' %}Status: Entregue
+                                    {% else %}Selecione o Tipo{% endif %}
+                                {% else %}
+                                    Selecione o Tipo
+                                {% endif %}
+                            </div>
+                            <div class="options">
+                                <div class="option" data-value="codigo_manutencao">ID Manutenção</div>
+                                <div class="option" data-value="codigo_cliente">ID Cliente</div>
+                                <div class="option" data-value="orcamento">Status: Orçamento</div>
+                                <div class="option" data-value="emManutencao">Status: Em Manutenção</div>
+                                <div class="option" data-value="aguardandoPeca">Status: Aguardando Peça</div>
+                                <div class="option" data-value="pronto">Status: Pronto</div>
+                                <div class="option" data-value="naoAprovado">Status: Não Aprovado</div>
+                                <div class="option" data-value="entregue">Status: Entregue</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="tipo_pesquisa_hidden" name="tipo_pesquisa" value="{{ search_criteria.tipo_pesquisa if search_criteria else '' }}" required>
+                    </div>
+                    <div class="form-row" id="termo_pesquisa_container" style="display: none;">
+                         <label for="termo_pesquisa">ID:</label>
+                         <input type="text" id="termo_pesquisa_input" name="termo_pesquisa" placeholder="Digite o ID" value="{{ search_criteria.termo_pesquisa if search_criteria else '' }}">
+                    </div>
+                    <div class="form-row">
+                        <button type="submit">Pesquisar</button>
+                    </div>
+                </form>
+
+                <div class="resultados-container" id="resultados_manutencao">
+                    <h2>Resultados da Pesquisa</h2>
+
+                    <div class="tabela-wrapper">
+                        {# Verifica se a lista 'resultados' NÃO está vazia #}
+                        {% if resultados %}
+                        <table>
+                            <thead>
+                                <tr> {# Verifique se os nomes TH correspondem ao que você espera #}
+                                    <th>ID Manut.</th>
+                                    <th>Cliente</th>
+                                    <th>Equipamento</th>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
+                                    <th>Nº Série</th>
+                                    <th>Status</th>
+                                    <th>Data Entrada</th>
+                                    <th>Orçamento R$</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {# Loop para cada item na lista 'resultados' #}
+                                {% for manutencao in resultados %}
+                                <tr>
+                                    {# Acessando os dados - Confirme se os nomes das colunas estão corretos #}
+                                    {# O Python envia 'nome_cliente' para o nome que veio do JOIN #}
+                                    <td>{{ manutencao.codigo_manutencao }}</td>
+                                    <td>{{ manutencao.nome_cliente if manutencao.nome_cliente else 'N/A (' ~ manutencao.codigo_cliente ~ ')' }}</td>
+                                    <td>{{ manutencao.tipo_equipamento }}</td>
+                                    <td>{{ manutencao.marca }}</td>
+                                    <td>{{ manutencao.modelo if manutencao.modelo else '-' }}</td>
+                                    <td>{{ manutencao.numero_serie }}</td>
+                                    <td>{{ manutencao.status_manutencao }}</td>
+                                    <td>{{ manutencao.data_entrada }}</td>
+                                    <td>{{ "%.2f"|format(manutencao.valor_orcamento|float) }}</td>
+                                </tr>
+                                {% endfor %} {# Fim do loop #}
+                            </tbody>
+                        </table>
+                        {% elif request.method == 'POST' %}
+                           {# Se foi um POST e 'resultados' está vazio, a mensagem flash já deve ter indicado "Nenhuma manutenção encontrada." #}
+                           {# Você pode adicionar uma mensagem aqui se quiser, mas o flash é melhor #}
+                           {% endif %} {# Fim do if resultados #}
+                    </div> </div> </div> </section> </main>
+    <footer>
+        <p>&copy; 2025 InfoTech autor - Jezreel Santos- UFOP (Disciplina: CSI606) - Prof. Fernando Oliveira</p>
+    </footer>
+</body>
+</html>

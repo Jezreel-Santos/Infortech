@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTech - Cadastrar Manutenção</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cadastrar-manutencao.css') }}">
+    <script src="{{ url_for('static', filename='cadastrar-manutencao.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='Imagens/logo-infotech.jpg') }}" alt="logo-infotech">
+        </a>
+        <h1>InfoTech - Manutenções</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <ul>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Cliente</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a></li>
+                        <li><a href="{{ url_for('pesquisar_cliente_page') }}">Pesquisar Cliente</a></li>
+                        <li><a href="{{ url_for('atualizar_cadastro') }}">Atualizar Cadastro</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Manutenção</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_manutencao') }}">Cadastrar Manutenção</a></li>
+                        <li><a href="{{ url_for('pesquisar_manutencao') }}">Pesquisar Manutenção</a></li>
+                        <li><a href="{{ url_for('atualizar_status') }}">Atualizar Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Contato</a>
+                    <ul>
+                        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="conteudo">
+            <div class="plano-de-fundo">
+                <img src="{{ url_for('static', filename='Imagens/principal.jpg') }}" alt="Imagem Principal">
+            </div>
+
+            <div class="cadastro-manutencao">
+                <h1>Cadastrar Manutenção</h1>
+
+                <form action="{{ url_for('cadastrar_manutencao') }}" method="POST">
+                    <label for="codigoCliente">Código do cliente:</label>
+                    <input type="text" id="codigoCliente" name="codigoCliente" placeholder="Informe o COD cliente" required>
+
+                    <label for="dataEntrada">Data de entrada:</label>
+                    <input type="date" id="dataEntrada" name="dataEntrada" required>
+
+                    <label for="tipoEquipamento">Tipo equipamento:</label>
+                    <div class="custom-select" id="tipoEquipamentoContainer">
+                        <div class="selected">Selecione um equipamento</div>
+                        <div class="options">
+                            <div class="option" data-value="notebook">Notebook</div>
+                            <div class="option" data-value="tablet">Tablet</div>
+                            <div class="option" data-value="roteador">Roteador</div>
+                            <div class="option" data-value="cpu">CPU</div>
+                            <div class="option" data-value="monitor">Monitor</div>
+                            <div class="option" data-value="impressora">Impressora</div>
+                            <div class="option" data-value="outro">Outro</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="tipoEquipamentoValue" name="tipoEquipamento" value="" required>
+
+                    <label for="marca">Marca:</label>
+                    <input type="text" id="marca" name="marca" placeholder="Informe marca do equipamento" required>
+
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" id="modelo" name="modelo" placeholder="Informe o modelo do equipamento">
+
+                    <label for="numeroSerie">Número de série:</label>
+                    <input type="text" id="numeroSerie" name="numeroSerie" placeholder="Informe o numero de série" required>
+
+                    <label for="descricaoProblema">Descrição do problema:</label>
+                    <textarea id="descricaoProblema" name="descricaoProblema" placeholder="Informe a descrição do problema" rows="3" required></textarea>
+
+                    <label for="valorOrcamento">Valor do orçamento (R$):</label>
+                    <input type="number" id="valorOrcamento" name="valorOrcamento" min="0" step="0.01" placeholder="Ex: 150.00" required>
+
+                    <label for="statusManutencao">Status da manutenção:</label>
+                    <div class="custom-select" id="statusManutencaoContainer">
+                        <div class="selected">Selecione o status</div>
+                        <div class="options">
+                            {# --- Opções Padronizadas --- #}
+                            <div class="option" data-value="orcamento">Orçamento</div>
+                            <div class="option" data-value="emManutencao">Em Manutenção</div>
+                            <div class="option" data-value="aguardandoPeca">Aguardando Peça</div>
+                            <div class="option" data-value="pronto">Pronto</div>
+                            <div class="option" data-value="naoAprovado">Não Aprovado</div>
+                            <div class="option" data-value="entregue">Entregue</div>
+                            {# --- Fim das Opções --- #}
+                        </div>
+                    </div>
+                    <input type="hidden" id="statusManutencaoValue" name="statusManutencao" value="" required>
+
+                    <input type="submit" value="Enviar">
+                </form>
+
+            </div> </section> </main>
+    <footer>
+        <p>&copy; 2025 InfoTech autor - Jezreel Santos- UFOP (Disciplina: CSI606) - Prof. Fernando Oliveira</p>
+    </footer>
+    </body>
+</html>

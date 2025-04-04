@@ -1,0 +1,180 @@
+
+/* --- ESTILOS BASE DA PÁGINA (Copiar de outro CSS corrigido) --- */
+
+body { font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #000; 
+    color: #fff; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    position: relative; 
+}
+
+header { 
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-shrink: 0; 
+}
+
+header img { 
+    max-height: 80px; 
+    margin-right: 10px; 
+}
+
+header h1 { font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    font-size: 2.0em; 
+    color: #fff; 
+}
+
+main { display: flex; 
+    flex-grow: 1; 
+    position: relative; 
+    padding-bottom: 60px; 
+    width: 100%; 
+}
+
+/* --- ESTILOS DO MENU LATERAL --- */
+.menu { 
+    width: 200px; 
+    flex-shrink: 0; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding-top: 20px; 
+    height: calc(100vh - 100px - 60px); 
+    overflow-y: auto; 
+    z-index: 3; 
+}
+
+
+.menu ul { list-style-type: none; padding: 0; margin: 0; background-color: transparent; border-radius: 5px; }
+
+.menu ul li a { display: block; padding: 10px 15px; color: #fff; text-decoration: none; transition: background-color 0.4s ease; }
+
+.menu ul li a:hover { background-color: #396c95; }
+
+.menu ul li:last-child { border-bottom: none; }
+
+.menu ul ul { list-style-type: none; padding: 0; margin: 0; background-color: #5e82a0; border-radius: 5px; display: none; box-sizing: border-box; }
+
+.menu ul ul li { border-bottom: 0px solid #ddd; white-space: nowrap; }
+
+.menu ul ul li:last-child { border-bottom: none; }
+
+
+/* --- CONTAINER PRINCIPAL DO CONTEÚDO --- */
+.conteudo {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    padding: 20px 30px;
+    overflow: hidden;
+}
+
+
+/* --- IMAGEM DE FUNDO --- */
+
+.plano-de-fundo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+.plano-de-fundo img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+
+/* --- CONTAINER DAS INFORMAÇÕES DE CONTATO --- */
+.contato-container {
+    width: 90%;
+    max-width: 500px; 
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.contato-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    color: #eee;
+}
+
+/* Div que agrupa os campos de informação */
+.contato-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os campos */
+}
+
+.contato-info label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+/* Estilo para os campos readonly */
+.contato-info input[readonly],
+.contato-info textarea[readonly] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444; /* Borda sutil */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo muito sutil */
+    color: #ddd; /* Cor do texto */
+    cursor: text; /* Cursor de texto para indicar que pode selecionar */
+    font-family: inherit; /* Usa a mesma fonte do body */
+    font-size: 1em;
+    line-height: 1.4;
+    transition: border-color 0.3s ease;
+}
+/* Muda a borda no foco para dar feedback visual */
+.contato-info input[readonly]:focus,
+.contato-info textarea[readonly]:focus {
+     border-color: #007bff;
+     outline: none;
+}
+
+.contato-info textarea[readonly] {
+    resize: none; /* Impede redimensionamento */
+    min-height: 70px; /* Altura mínima para endereço */
+}
+
+/* Dica para copiar */
+.copy-hint {
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: #888;
+    text-align: center;
+}
+
+/* --- Footer --- */
+footer { background-color: #333; color: #fff; text-align: center; padding: 10px; width: 100%; box-sizing: border-box; position: absolute; bottom: 0; left: 0; z-index: 3; flex-shrink: 0; }
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    main { flex-direction: column; padding-bottom: 80px; }
+    .menu { width: 100%; height: auto; margin-bottom: 20px; overflow-y: visible; }
+    .conteudo { padding: 15px; align-items: center; } /* Mantém centralizado */
+    .contato-container { width: 95%; padding: 20px; }
+}
+@media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; }
+    header img { margin-bottom: 10px; }
+    .contato-container { padding: 15px; }
+    .contato-container h2 { font-size: 1.3em; margin-bottom: 20px;}
+    .contato-info input[readonly],
+    .contato-info textarea[readonly] { font-size: 0.95em; padding: 8px; }
+}
+

@@ -1,0 +1,219 @@
+
+/* --- ESTILOS BASE DA PÁGINA --- */
+body { 
+    font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #000; 
+    color: #fff; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    position: relative; 
+}
+
+header { 
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-shrink: 0; 
+}
+
+header img { 
+    max-height: 80px; 
+    margin-right: 10px; 
+}
+
+header h1 { 
+    font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    font-size: 2.0em; 
+    color: #fff; 
+}
+
+main { 
+    display: flex; 
+    flex-grow: 1; 
+    position: relative; 
+    padding-bottom: 60px; 
+    width: 100%; 
+}
+
+
+/* --- ESTILOS DO MENU LATERAL --- */
+
+.menu { width: 200px; 
+    flex-shrink: 0; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding-top: 20px; 
+    height: calc(100vh - 100px - 60px); 
+    overflow-y: auto; 
+    z-index: 3; 
+}
+
+.menu ul { list-style-type: none; padding: 0; margin: 0; background-color: transparent; border-radius: 5px; }
+
+.menu ul li a { display: block; padding: 10px 15px; color: #fff; text-decoration: none; transition: background-color 0.4s ease; }
+
+.menu ul li a:hover { background-color: #396c95; }
+
+.menu ul li:last-child { border-bottom: none; }
+
+.menu ul ul { list-style-type: none; padding: 0; margin: 0; background-color: #5e82a0; border-radius: 5px; display: none; box-sizing: border-box; }
+
+.menu ul ul li { border-bottom: 0px solid #ddd; white-space: nowrap; }
+
+.menu ul ul li:last-child { border-bottom: none; }
+
+
+
+/* --- CONTAINER PRINCIPAL DO CONTEÚDO --- */
+.conteudo { 
+    flex-grow: 1; 
+    position: relative; 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    padding: 20px 30px; 
+    overflow: hidden; 
+}
+
+/* --- IMAGEM DE FUNDO --- */
+.plano-de-fundo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+.plano-de-fundo img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+
+
+/* --- CONTAINER DO FORMULÁRIO "Cadastrar Cliente" --- */
+.cadastro-cliente {
+    width: 90%;
+    max-width: 550px; 
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cadastro-cliente h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    flex-shrink: 0;
+}
+
+/* --- ESTILOS DO FORMULÁRIO --- */
+.cadastro-cliente form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.cadastro-cliente form label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.cadastro-cliente form input[type="text"],
+.cadastro-cliente form input[type="tel"],
+.cadastro-cliente form input[type="email"],
+.cadastro-cliente form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+/* Foco visual */
+.cadastro-cliente form input:focus,
+.cadastro-cliente form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.cadastro-cliente form textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* --- ESTILO AUTOFILL --- */
+.cadastro-cliente form input:-webkit-autofill,
+.cadastro-cliente form input:-webkit-autofill:hover,
+.cadastro-cliente form input:-webkit-autofill:focus,
+.cadastro-cliente form textarea:-webkit-autofill,
+.cadastro-cliente form textarea:-webkit-autofill:hover,
+.cadastro-cliente form textarea:-webkit-autofill:focus {
+  border: 1px solid #007bff;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.7) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #fff;
+}
+
+/* Botão Submit */
+.cadastro-cliente form input[type="submit"] {
+    background-color: #007bff; color: white;
+    padding: 12px 20px; border: none; border-radius: 4px;
+    cursor: pointer; font-size: 16px; margin-top: 15px;
+    align-self: center; width: 150px; flex-shrink: 0;
+}
+.cadastro-cliente form input[type="submit"]:hover { background-color: #0056b3; }
+
+/* --- ESTILOS PARA MENSAGENS FLASH --- */
+.flash-messages-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px; /* Espaço abaixo das mensagens */
+}
+
+.flash-messages-container span.flash {
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin: 5px 0; /* Espaço vertical entre mensagens se houver várias */
+    display: inline-block; /* Para respeitar padding/margin */
+    max-width: 90%; /* Evita que a mensagem ocupe toda a largura */
+    box-sizing: border-box;
+    font-size: 0.95em;
+}
+
+/* Cores das mensagens */
+.flash-messages-container span.flash-success { background-color: #28a745; color: white; }
+.flash-messages-container span.flash-error { background-color: #dc3545; color: white; }
+.flash-messages-container span.flash-warning { background-color: #ffc107; color: #333; }
+.flash-messages-container span.flash-info { background-color: #17a2b8; color: white; }
+
+
+/* --- Footer --- */
+footer { background-color: #333; color: #fff; text-align: center; padding: 10px; width: 100%; box-sizing: border-box; position: absolute; bottom: 0; left: 0; z-index: 3; flex-shrink: 0; }
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    main { flex-direction: column; padding-bottom: 80px; }
+    .menu { width: 100%; height: auto; margin-bottom: 20px; overflow-y: visible; }
+    .conteudo { padding: 15px; align-items: center; }
+    .cadastro-cliente { width: 95%; padding: 15px; }
+}
+@media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; }
+    header img { margin-bottom: 10px; }
+    .cadastro-cliente { padding: 10px; }
+    .cadastro-cliente h1 { font-size: 1.3em; margin-bottom: 15px;}
+    .cadastro-cliente form input,
+    .cadastro-cliente form textarea { font-size: 0.9em; padding: 8px; }
+    .cadastro-cliente form input[type="submit"] { padding: 10px 15px; width: 120px; }
+}

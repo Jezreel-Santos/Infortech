@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTech - Pesquisar Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pesquisar-cliente.css') }}">
+    <script src="{{ url_for('static', filename='pesquisar-cliente.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='Imagens/logo-infotech.jpg') }}" alt="logo-infotech">
+        </a>
+        <h1>InfoTech - Manutenções</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <ul>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Cliente</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a></li>
+                        <li><a href="{{ url_for('pesquisar_cliente_page') }}">Pesquisar Cliente</a></li>
+                        <li><a href="{{ url_for('atualizar_cadastro') }}">Atualizar Cadastro</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Manutenção</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_manutencao') }}">Cadastrar Manutenção</a></li>
+                        <li><a href="{{ url_for('pesquisar_manutencao') }}">Pesquisar Manutenção</a></li>
+                        <li><a href="{{ url_for('atualizar_status') }}">Atualizar Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="estadoMenu(this.parentElement)">Contato</a>
+                    <ul>
+                        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="conteudo">
+            <div class="plano-de-fundo">
+                <img src="{{ url_for('static', filename='Imagens/principal.jpg') }}" alt="Imagem Principal">
+            </div>
+
+            <div class="pesquisar-cliente">
+
+                <div id="pesquisa_client_princ">
+                    <h1>Pesquisar Cliente</h1>
+                    <form id="pesquisar_cliente_form">
+                        <label for="cliente_id">ID do Cliente:</label>
+                        <input type="number" id="cliente_id" name="cliente_id" placeholder="Digite o ID do cliente" required><br>
+                        <button type="submit" id="buscar_cliente">Buscar Cliente</button><br><br>
+                    </form>
+                </div>
+
+                <div id="info_cliente"> <h2>Informações do Cliente</h2>
+                    <table id="cliente_table">
+                        <thead>
+                            <tr>
+                                <th>ID Cliente</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Telefone</th>
+                                <th>Email</th>
+                                <th>Endereço</th>
+                                <th>Data Cadastro</th>
+                                <th>Hora Cadastro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+
+                 <div id="mensagem_erro" style="display: none;"></div>
+
+            </div> </section> </main>
+    <footer>
+        <p>&copy; 2025 InfoTech autor - Jezreel Santos- UFOP (Disciplina: CSI606) - Prof. Fernando Oliveira</p>
+    </footer>
+    </body>
+</html>

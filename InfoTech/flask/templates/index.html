@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='Imagens/logo-infotech.jpg') }}" alt="logo-infotech">
+        </a>
+        <h1>InfoTech - Manutenções</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <ul>
+                <li>
+                    <a href="#" onclick="estadoMenu(this.parentElement)">Cliente</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a></li>
+                        <li><a href="{{ url_for('pesquisar_cliente_page') }}">Pesquisar Cliente</a></li>
+                        <li><a href="{{ url_for('atualizar_cadastro') }}">Atualizar Cadastro</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="estadoMenu(this.parentElement)">Manutenção</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_manutencao') }}">Cadastrar Manutenção</a></li>
+                        <li><a href="{{ url_for('pesquisar_manutencao') }}">Pesquisar Manutenção</a></li>
+                        <li><a href="{{ url_for('atualizar_status') }}">Atualizar Status</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="estadoMenu(this.parentElement)">Contato</a>
+                    <ul>
+                        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+            <section class="descricao">
+                <p>
+                    A InfoTech é uma empresa de manutenção de equipamentos de informática que atua no mercado desde 2003, promovendo qualidade e satisfação nos serviços prestados. Frente à alta complexidade da demanda e à rápida evolução tecnológica, a InfoTech se destaca por:
+                    <ul>
+                        <li>Equipe altamente qualificada: Profissionais experientes e certificados, em constante atualização com as últimas tendências e tecnologias.</li>
+                        <li>Atendimento personalizado: Soluções sob medida para as necessidades de cada cliente, seja ele pessoa física ou jurídica.</li>
+                        <li>Agilidade e eficiência: Diagnóstico preciso e reparos rápidos, minimizando o tempo de inatividade dos equipamentos.</li>
+                        <li>Variedade de serviços: Manutenção preventiva e corretiva, instalação e configuração de softwares, recuperação de dados, segurança da informação e muito mais.</li>
+                        <li>Compromisso com a qualidade: Utilização de peças de reposição de alta qualidade e garantia em todos os serviços prestados.</li>
+                    </ul>
+                    A InfoTech se orgulha de sua trajetória de sucesso e se compromete a continuar oferecendo o melhor em manutenção de equipamentos de informática, sempre com foco na satisfação do cliente.
+                </p>
+            </section>
+
+            <section class="plano-de-fundo">
+                <img src="{{ url_for('static', filename='Imagens/principal.jpg') }}" alt="Imagem Principal">
+            </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 InfoTech autor - Jezreel Santos- UFOP (Disciplina: CSI606) - Prof. Fernando Oliveira</p>
+    </footer>
+</body>
+</html>

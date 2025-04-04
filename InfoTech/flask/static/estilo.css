@@ -1,0 +1,211 @@
+body {
+    font-family: 'Chakra Petch', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+header img {
+    max-height: 80px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-family: 'Chakra Petch', sans-serif;
+    margin: 0;
+    font-size: 2.0em;
+    color: #fff;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+    padding-bottom: 60px;
+}
+
+aside.menu {
+    width: 250px;
+    margin-right: 20px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.menu ul li a { /* Estilo para os links do menu pai */
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.4s ease;
+}
+
+.menu ul li a:hover {
+    background-color: #396c95;
+}
+
+.menu ul li:last-child {
+    border-bottom: none;
+}
+
+.menu ul ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #5e82a0;
+    border-radius: 5px;
+    display: none;
+    width: flex;
+    box-sizing: border-box;
+    position: static;
+}
+
+.menu ul ul li {
+    border-bottom: 0px solid #ddd;
+    width: flex;
+    white-space: nowrap;
+}
+
+.menu ul ul li:last-child {
+    border-bottom: none;
+}
+
+.descricao {
+    margin-top: 30px;
+    text-align: justify;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    width: calc(100% - 270px);
+}
+
+.descricao ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.plano-de-fundo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.plano-de-fundo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+}
+
+.menu li.active {
+    font-weight: bold;
+}
+
+#pg-contatos {
+    width: 400px; /* Ajuste a largura conforme necessário */
+    margin: 20px auto; /* Centraliza o formulário horizontalmente */
+    padding: 20px;
+    background-color: #1a1a1a; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#pg-contatos label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#pg-contatos input[type="email"],
+#pg-contatos input[type="tel"],
+#pg-contatos input[type="Whats"],
+#pg-contatos textarea {
+    background-color: #dedede;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que o padding e a borda não aumentem a largura */
+}
+
+#pg-contatos textarea {
+    resize: vertical; /* Permite redimensionar a textarea verticalmente */
+}
+
+#pg-contatos input[type="submit"] {
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#pg-contatos input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header img {
+        margin-bottom: 10px;
+    }
+
+    main {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    aside.menu {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .descricao {
+        padding: 0;
+        width: 100%;
+    }
+
+    .menu ul ul {
+        position: static;
+        left: 0;
+        margin-left: 0;
+    }
+}

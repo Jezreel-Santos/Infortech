@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTech - Cadastrar Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cadastrar-cliente.css') }}">
+    <script src="{{ url_for('static', filename='cadastrar-cliente.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='Imagens/logo-infotech.jpg') }}" alt="logo-infotech">
+        </a>
+        <h1>InfoTech - Manutenções</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <ul>
+                <li>
+                    <a href="#" onclick="estadoMenu(this.parentElement)">Cliente</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a></li>
+                        <li><a href="{{ url_for('pesquisar_cliente_page') }}">Pesquisar Cliente</a></li>
+                        <li><a href="{{ url_for('atualizar_cadastro') }}">Atualizar Cadastro</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="estadoMenu(this.parentElement)">Manutenção</a>
+                    <ul>
+                        <li><a href="{{ url_for('cadastrar_manutencao') }}">Cadastrar Manutenção</a></li>
+                        <li><a href="{{ url_for('pesquisar_manutencao') }}">Pesquisar Manutenção</a></li>
+                        <li><a href="{{ url_for('atualizar_status') }}">Atualizar Status</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="estadoMenu(this.parentElement)">Contato</a>
+                    <ul>
+                        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="conteudo">
+             <div class="plano-de-fundo">
+                <img src="{{ url_for('static', filename='Imagens/principal.jpg') }}" alt="Manutenção">
+            </div>
+
+            <div class="cadastro-cliente">
+
+                {# === Bloco para exibir mensagens Flash === #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    <div class="flash-messages-container">
+                      {% for category, message in messages %}
+                        <span class="flash flash-{{ category }}">{{ message }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endwith %}
+                {# === Fim do Bloco Flash === #}
+
+                <h1>Cadastrar Cliente</h1>
+                <form method="POST" action="{{ url_for('cadastrar_cliente') }}">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome Completo" required><br>
+
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required><br>
+
+                    <label for="telCliente">Telefone:</label>
+                    <input type="tel" id="telCliente" name="telefone" placeholder="(dd) 00000-0000" required><br>
+
+                    <label for="emailCliente">E-mail:</label>
+                    <input type="email" id="emailCliente" name="email" placeholder="exemplo@email.com" required><br>
+
+                    <label for="enderecoCliente">Endereço:</label>
+                    <textarea id="enderecoCliente" name="endereco" placeholder="Rua, Número, Bairro, Cidade - Estado, CEP" rows="3" required></textarea><br><br>
+
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+
+        </section> </main>
+    <footer>
+        <p>&copy; 2025 InfoTech autor - Jezreel Santos- UFOP (Disciplina: CSI606) - Prof. Fernando Oliveira</p>
+    </footer>
+</body>
+</html>

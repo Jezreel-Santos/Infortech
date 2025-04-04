@@ -1,0 +1,410 @@
+
+/* --- ESTILOS BASE DA PÁGINA --- */
+
+body { 
+    font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #000; 
+    color: #fff; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    position: relative; 
+}
+
+header { 
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-shrink: 0; 
+}
+
+header img { 
+    max-height: 80px; 
+    margin-right: 10px; 
+}
+
+header h1 { 
+    font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    font-size: 2.0em; 
+    color: #fff; 
+}
+
+main { 
+    display: flex; 
+    flex-grow: 1; 
+    position: relative; 
+    padding-bottom: 60px; 
+    width: 100%; 
+}
+
+/* --- ESTILOS DO MENU LATERAL --- */
+.menu { 
+    width: 200px; 
+    flex-shrink: 0; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding-top: 20px; 
+    height: calc(100vh - 100px - 60px); 
+    overflow-y: auto; 
+    z-index: 3; 
+}
+
+.menu ul { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    background-color: transparent; 
+    border-radius: 5px; 
+}
+
+.menu ul li a { 
+    display: block; 
+    padding: 10px 15px; 
+    color: #fff; 
+    text-decoration: none; 
+    transition: background-color 0.4s ease; 
+}
+
+.menu ul li a:hover { 
+    background-color: #396c95; 
+}
+
+.menu ul li:last-child { 
+    border-bottom: none; 
+}
+
+.menu ul ul { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    background-color: #5e82a0; 
+    border-radius: 5px; 
+    display: none; 
+    box-sizing: border-box; 
+}
+
+.menu ul ul li { 
+    border-bottom: 0px solid #ddd; 
+    white-space: nowrap; 
+}
+
+.menu ul ul li:last-child { border-bottom: none; 
+}
+
+
+/* --- CONTAINER PRINCIPAL DO CONTEÚDO --- */
+
+.conteudo { 
+    flex-grow: 1; 
+    position: relative; 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    padding: 30px 40px; 
+    overflow: hidden; 
+}
+
+
+/* --- IMAGEM DE FUNDO --- */
+
+.plano-de-fundo { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1; 
+}
+
+.plano-de-fundo img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.4; 
+}
+
+
+/* --- CONTAINER PRINCIPAL DA PÁGINA "Atualizar Status" --- */
+
+.atualizar-status-container {
+    width: 90%;
+    max-width: 700px; /* Largura maior para exibir mais dados */
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espaço entre busca, update/delete */
+}
+
+/* Títulos */
+.atualizar-status-container h1,
+.atualizar-status-container h2 {
+    text-align: center;
+    margin: 0 0 15px 0; /* Margem inferior */
+    flex-shrink: 0;
+}
+
+.atualizar-status-container h1 { font-size: 1.6em; }
+
+.atualizar-status-container h2 { font-size: 1.3em; color: #eee; }
+
+/* Estilos para Mensagens Flash */
+
+.flash-messages-container { width: 100%; text-align: center; margin-bottom: 10px; }
+
+.flash-messages-container span.flash { padding: 10px 15px; border-radius: 4px; margin: 5px 0; display: inline-block; max-width: 90%; box-sizing: border-box; font-size: 0.95em; }
+
+.flash-messages-container span.flash-success { background-color: #28a745; color: white; }
+
+.flash-messages-container span.flash-error { background-color: #dc3545; color: white; }
+
+.flash-messages-container span.flash-warning { background-color: #ffc107; color: #333; }
+
+.flash-messages-container span.flash-info { background-color: #17a2b8; color: white; }
+
+/* Formulário de Busca */
+#form-busca-status {
+    display: flex;
+    align-items: flex-end; 
+    gap: 10px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 20px;
+}
+
+#form-busca-status label { 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+#form-busca-status input[type="number"] {
+    padding: 10px; 
+    border: 1px solid #555; 
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.08); 
+    color: #fff; 
+    flex-grow: 1;
+}
+
+#form-busca-status input:focus { border-color: #007bff; 
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); 
+    outline: none; 
+}
+
+#form-busca-status button {
+    background-color: #007bff; 
+    color: white; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 1em; 
+    height: 40px;
+}
+
+#form-busca-status button:hover { 
+    background-color: #0056b3; 
+}
+
+
+/* Container de Atualização e Exclusão */
+#update-delete-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+/* Formulário de Atualização */
+#form-update-status {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Campos de informação (desabilitados) */
+.info-field {
+    padding: 8px 0;
+    border-bottom: 1px dotted #444; /* Linha pontilhada sutil */
+}
+.info-field label {
+    font-weight: bold;
+    color: #aaa; 
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+}
+.info-field span {
+    color: #ddd; 
+    font-size: 1em;
+    word-wrap: break-word;
+}
+
+/* Container do Select de Status */
+
+.status-select-container {
+    margin-top: 10px; 
+}
+
+.status-select-container label { 
+    font-weight: bold; 
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+
+/* Estilo do Custom Select (similar aos outros) */
+
+.custom-select { position: relative; 
+    width: 100%; 
+    border: 1px solid #555; 
+    border-radius: 4px; 
+    background-color: rgba(255, 255, 255, 0.08); 
+    color: #fff; 
+    box-sizing: border-box; 
+    cursor: pointer; 
+}
+
+.custom-select.active .selected { 
+    border-color: #007bff; 
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); 
+}
+
+.custom-select .selected { 
+    padding: 10px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.custom-select .selected[data-placeholder="true"] { color: #aaa; }
+
+.custom-select .options { 
+    position: absolute; 
+    top: 100%; 
+    left: -1px; 
+    right: -1px; 
+    max-height: 150px; 
+    overflow-y: auto; 
+    border: 1px solid #007bff; 
+    border-top: none; 
+    border-radius: 0 0 4px 4px; 
+    background-color: rgba(20, 20, 20, 0.98); 
+    display: none; z-index: 10; 
+    box-sizing: border-box; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.custom-select.active .options { display: block; }
+
+.custom-select .option { padding: 10px; transition: background-color 0.2s ease; }
+
+.custom-select .option:hover { background-color: #0056b3; }
+
+.custom-select .options::-webkit-scrollbar { width: 6px; }
+
+.custom-select .options::-webkit-scrollbar-track { 
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 3px; 
+}
+
+.custom-select .options::-webkit-scrollbar-thumb { 
+    background-color: #5e82a0; 
+    border-radius: 3px; 
+}
+
+
+/* Botão Atualizar */
+.btn-atualizar {
+    background-color: #28a745; 
+    color: white; /* Verde */
+    padding: 12px 20px; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer; 
+    font-size: 1em; 
+    margin-top: 15px;
+    align-self: center; 
+    width: 180px;
+}
+
+.btn-atualizar:hover { background-color: #218838; }
+
+/* Separador */
+hr.separator {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 25px 0; /* Espaçamento vertical */
+}
+
+
+/* Seção de Exclusão */
+.delete-section {
+    text-align: center;
+}
+
+.delete-section h3 {
+    color: #ffc107; /* Amarelo aviso */
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.btn-excluir {
+    background-color: #dc3545; 
+    color: white; /* Vermelho perigo */
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer; 
+    font-size: 0.95em;
+}
+
+.btn-excluir:hover { background-color: #c82333; }
+
+/* Footer */
+footer { background-color: #333; 
+    color: #fff; 
+    text-align: center; 
+    padding: 10px; 
+    width: 100%; 
+    box-sizing: border-box; 
+    position: absolute; 
+    bottom: 0; left: 0; 
+    z-index: 3; 
+    flex-shrink: 0; }
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    main { flex-direction: column; padding-bottom: 80px; }
+
+    .menu { width: 100%; height: auto; margin-bottom: 20px; overflow-y: visible; }
+
+    .conteudo { padding: 15px; align-items: center; }
+
+    .atualizar-status-container { width: 95%; padding: 15px; max-height: none; }
+
+    #form-busca-status { flex-direction: column; align-items: stretch; }
+
+    #form-busca-status button { width: 100%; margin-top: 10px; }
+}
+@media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; }
+
+    header img { margin-bottom: 10px; }
+
+    .atualizar-status-container { padding: 10px; }
+
+    .atualizar-status-container h1 { font-size: 1.3em; }
+    
+    .atualizar-status-container h2 { font-size: 1.1em; }
+}

@@ -1,0 +1,378 @@
+
+
+body { 
+    font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #000; 
+    color: #fff; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    position: relative; 
+}
+
+header { 
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-shrink: 0; 
+}
+
+header img { 
+    max-height: 80px; 
+    margin-right: 10px; 
+}
+
+header h1 { 
+    font-family: 'Chakra Petch', sans-serif; 
+    margin: 0; 
+    font-size: 2.0em; 
+    color: #fff; 
+}
+
+main { 
+    display: flex; 
+    flex-grow: 1; 
+    position: relative; 
+    padding-bottom: 60px; 
+    width: 100%; 
+}
+
+
+/* --- ESTILOS DO MENU LATERAL --- */
+
+.menu { 
+    width: 200px; 
+    flex-shrink: 0; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding-top: 20px; 
+    height: calc(100vh - 100px - 60px); 
+    overflow-y: auto; 
+    z-index: 3; 
+}
+
+.menu ul { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    background-color: transparent; 
+    border-radius: 5px; 
+}
+
+.menu ul li a { 
+    display: block; 
+    padding: 10px 15px; 
+    color: #fff; 
+    text-decoration: none; 
+    transition: background-color 0.4s ease; 
+}
+
+.menu ul li a:hover { 
+    background-color: #396c95; 
+}
+
+.menu ul li:last-child { 
+    border-bottom: none; 
+}
+
+.menu ul ul { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    background-color: #5e82a0; 
+    border-radius: 5px; 
+    display: none; 
+    box-sizing: border-box; 
+}
+
+.menu ul ul li { 
+    border-bottom: 0px solid #ddd; 
+    white-space: nowrap; 
+}
+
+.menu ul ul li:last-child { border-bottom: none; }
+
+
+/* --- CONTAINER PRINCIPAL DO CONTEÚDO --- */
+
+.conteudo { 
+    flex-grow: 1; 
+    position: relative; 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    padding: 20px 30px; overflow: hidden; 
+}
+
+/* --- IMAGEM DE FUNDO --- */
+
+.plano-de-fundo { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1; 
+}
+
+.plano-de-fundo img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.4; 
+}
+
+/* --- CONTAINER PRINCIPAL DA PÁGINA "Pesquisar Manutenção" --- */
+.pesquisar-manutencao-container {
+    width: 95%; /* Ocupa mais espaço horizontal */
+    max-width: 1200px; /* Limita largura máxima */
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.pesquisar-manutencao-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    flex-shrink: 0;
+}
+
+/* --- FORMULÁRIO DE PESQUISA --- */
+
+#form-pesquisa-manutencao {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha */
+    gap: 15px 20px; /* Espaçamento vertical e horizontal */
+    align-items: flex-end; /* Alinha itens na base */
+    margin-bottom: 30px; /* Espaço abaixo do formulário */
+    border-bottom: 1px solid #444; /* Linha separadora */
+    padding-bottom: 20px; /* Espaço antes da linha */
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column; /* Label acima do input/select */
+    flex-grow: 1; /* Permite que cresçam */
+    min-width: 200px; /* Largura mínima para cada item */
+}
+/* Ajuste para o botão ficar alinhado */
+.form-row:has(button) {
+     min-width: auto; /* Botão não precisa de largura mínima grande */
+     flex-grow: 0; /* Não cresce */
+}
+
+
+#form-pesquisa-manutencao label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Inputs e Textarea (se houver) */
+#form-pesquisa-manutencao input[type="text"],
+#form-pesquisa-manutencao input[type="number"] { /* Se usar number */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+#form-pesquisa-manutencao input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Select Customizado */
+#form-pesquisa-manutencao .custom-select {
+    position: relative;
+    width: 100%;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+#form-pesquisa-manutencao .custom-select.active .selected { border-color: #007bff; box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); }
+
+#form-pesquisa-manutencao .custom-select .selected { padding: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+#form-pesquisa-manutencao .custom-select .selected[data-placeholder="true"] { color: #aaa; }
+
+#form-pesquisa-manutencao .custom-select .options { 
+    position: absolute; top: 100%; left: -1px; right: -1px; max-height: 150px; 
+    overflow-y: auto; border: 1px solid #007bff; border-top: none; 
+    border-radius: 0 0 4px 4px; background-color: rgba(20, 20, 20, 0.98); 
+    display: none; z-index: 10; box-sizing: border-box; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+#form-pesquisa-manutencao .custom-select.active .options { display: block; }
+
+#form-pesquisa-manutencao .custom-select .option { padding: 10px; transition: background-color 0.2s ease; }
+
+#form-pesquisa-manutencao .custom-select .option:hover { background-color: #0056b3; }
+
+#form-pesquisa-manutencao .custom-select .options::-webkit-scrollbar { width: 6px; }
+
+#form-pesquisa-manutencao .custom-select .options::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+
+#form-pesquisa-manutencao .custom-select .options::-webkit-scrollbar-thumb { background-color: #5e82a0; border-radius: 3px; }
+
+/* Botão de Pesquisa */
+#form-pesquisa-manutencao button[type="submit"] {
+    background-color: #007bff; color: white;
+    padding: 10px 25px; /* Ajuste padding */
+    border: none; border-radius: 4px; cursor: pointer;
+    font-size: 1em; height: 40px; /* Altura igual aos inputs */
+    line-height: 1; /* Alinha texto verticalmente */
+}
+
+#form-pesquisa-manutencao button[type="submit"]:hover { background-color: #0056b3; }
+
+
+/* --- ÁREA DE RESULTADOS --- */
+.resultados-container {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resultados-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: #ccc;
+}
+
+/* Mensagens Flash */
+.flash-messages {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.flash { padding: 8px 15px; border-radius: 4px; margin: 5px; display: inline-block; }
+.flash.error { background-color: #dc3545; color: white; }
+.flash.warning { background-color: #ffc107; color: #333; }
+.flash.info { background-color: #17a2b8; color: white; }
+.flash.success { background-color: #28a745; color: white; }
+
+
+/* Wrapper da Tabela para Scroll */
+.tabela-wrapper {
+    width: 100%;
+    max-height: 55vh; /* Altura máxima para a área da tabela */
+    overflow: auto; /* Scroll horizontal e vertical se necessário */
+    border: 1px solid #444; /* Borda em volta da área de scroll */
+    border-radius: 4px;
+}
+
+.tabela-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+    table-layout: fixed; /* Ajuda no controle de largura */
+    word-wrap: break-word;
+}
+
+.tabela-wrapper th,
+.tabela-wrapper td {
+    border: 1px solid #555;
+    padding: 10px 8px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+.tabela-wrapper th {
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    position: sticky; /* Cabeçalho fixo ao rolar verticalmente */
+    top: 0;
+    z-index: 1; /* Garante que fique acima do conteúdo da tabela */
+}
+
+.tabela-wrapper tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.05); }
+.tabela-wrapper tr:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+/* Larguras das Colunas (Ajuste conforme necessário) */
+.tabela-wrapper th:nth-child(1), .tabela-wrapper td:nth-child(1) { width: 8%; text-align: center; }  /* ID Manut */
+
+.tabela-wrapper th:nth-child(2), .tabela-wrapper td:nth-child(2) { width: 18%; } /* Cliente */
+
+.tabela-wrapper th:nth-child(3), .tabela-wrapper td:nth-child(3) { width: 12%; } /* Equipamento */
+
+.tabela-wrapper th:nth-child(4), .tabela-wrapper td:nth-child(4) { width: 10%; } /* Marca */
+
+.tabela-wrapper th:nth-child(5), .tabela-wrapper td:nth-child(5) { width: 10%; } /* Modelo */
+
+.tabela-wrapper th:nth-child(6), .tabela-wrapper td:nth-child(6) { width: 12%; } /* Nº Série */
+
+.tabela-wrapper th:nth-child(7), .tabela-wrapper td:nth-child(7) { width: 10%; } /* Status */
+
+.tabela-wrapper th:nth-child(8), .tabela-wrapper td:nth-child(8) { width: 10%; text-align: center; } /* Data Entrada */
+
+.tabela-wrapper th:nth-child(9), .tabela-wrapper td:nth-child(9) { width: 10%; text-align: right; } /* Orçamento */
+
+
+/* Estilização da barra de rolagem para a TABELA */
+
+.tabela-wrapper::-webkit-scrollbar { width: 8px; height: 8px; }
+
+.tabela-wrapper::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+
+.tabela-wrapper::-webkit-scrollbar-thumb { background-color: #007bff; border-radius: 4px; border: 2px solid transparent; background-clip: content-box; }
+
+.tabela-wrapper::-webkit-scrollbar-thumb:hover { background-color: #0056b3; }
+
+
+footer { background-color: #333; color: #fff; text-align: center; padding: 10px; width: 100%; box-sizing: border-box; position: absolute; bottom: 0; left: 0; z-index: 3; flex-shrink: 0; }
+
+/* --- Responsividade --- */
+
+@media (max-width: 992px) {
+    .pesquisar-manutencao-container { width: 98%; padding: 20px; }
+    #form-pesquisa-manutencao { flex-direction: column; align-items: stretch; gap: 15px; }
+    .form-row { min-width: 100%; }
+    #form-pesquisa-manutencao button[type="submit"] { width: 100%; }
+}
+@media (max-width: 768px) {
+    main { flex-direction: column; padding-bottom: 80px; }
+    .menu { width: 100%; height: auto; margin-bottom: 20px; overflow-y: visible; }
+    .conteudo { padding: 10px; align-items: center; } /* Centraliza box */
+    .pesquisar-manutencao-container { width: 95%; padding: 15px; }
+    .tabela-wrapper { max-height: 45vh; } /* Reduz altura da tabela */
+    /* Oculta colunas menos essenciais em telas pequenas */
+    .tabela-wrapper th:nth-child(5), .tabela-wrapper td:nth-child(5) { display: none; } /* Modelo */
+    .tabela-wrapper th:nth-child(6), .tabela-wrapper td:nth-child(6) { display: none; } /* Nº Série */
+    .tabela-wrapper th:nth-child(9), .tabela-wrapper td:nth-child(9) { display: none; } /* Orçamento */
+     /* Redistribui larguras restantes */
+    .tabela-wrapper th:nth-child(1), .tabela-wrapper td:nth-child(1) { width: 10%; }
+    .tabela-wrapper th:nth-child(2), .tabela-wrapper td:nth-child(2) { width: 30%; }
+    .tabela-wrapper th:nth-child(3), .tabela-wrapper td:nth-child(3) { width: 20%; }
+    .tabela-wrapper th:nth-child(4), .tabela-wrapper td:nth-child(4) { width: 15%; }
+    .tabela-wrapper th:nth-child(7), .tabela-wrapper td:nth-child(7) { width: 15%; }
+    .tabela-wrapper th:nth-child(8), .tabela-wrapper td:nth-child(8) { width: 10%; }
+}
+@media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; }
+    header img { margin-bottom: 10px; }
+    .pesquisar-manutencao-container { padding: 10px; }
+    .pesquisar-manutencao-container h1 { font-size: 1.3em; }
+    .tabela-wrapper th, .tabela-wrapper td { font-size: 0.8em; padding: 6px 4px; }
+}
