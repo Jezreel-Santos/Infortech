@@ -19,7 +19,7 @@ Esta aplicação foi projetada como parte de um sistema maior, focando no suport
 
 Para uma melhor visualização do funcionamento do sistema, assista ao vídeo de demonstração:
 
-**(Link para o Vídeo de Demonstração)** ➔ https: ...................
+**(Link para o Vídeo de Demonstração)** ➔ [Infortech](https://drive.google.com/file/d/1sTU0SbrDkEGm33tOko8JnueWIgypz6Lh/view?usp=sharing).
 
 ## Tecnologias Utilizadas
 
@@ -119,4 +119,4 @@ Gostaria de dedicar este trabalho ao Professor Dr. Fernando B. Oliveira (Web - C
 
 * **Jezreel Santos** - *Aluno da disciplina CSI606*
 
---- Flask>=2.0 # Ou a versão específica que você usou, ex: Flask==2.3.2
+
